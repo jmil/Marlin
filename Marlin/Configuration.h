@@ -32,7 +32,7 @@
 // Sanguinololu 1.2 and above = 62
 // Ultimaker = 7,
 // Teensylu = 8
-#define MOTHERBOARD 33
+#define MOTHERBOARD 3
 
 //===========================================================================
 //=============================Thermal Settings  ============================
@@ -236,7 +236,9 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 //    we had before
 //    UGH -- GO BACK TO 1/4 STEPPING FOR EXTRUDER. LOSING STEPS at 1/16th stepping
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {52.913851209772999, 52.913851209772999, 2560, 124.530011898862}                    
+// SloateBot
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   {52.913851209772999, 52.913851209772999, 2560, 124.530011898862}                    
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80, 20, 421.0526315789, 40.256872550}                    
 
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   {78.7402,78.7402,200*8/3,760*1.1}                    // default steps per unit for ultimaker 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {40, 40, 3333.92, 67} //sells mendel with v9 extruder
