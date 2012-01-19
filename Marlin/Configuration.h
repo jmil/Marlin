@@ -36,7 +36,7 @@ float axis_steps_per_unit[] = {80, 20, 421.0526315789, 40.256872550};
 //// Endstop Settings
 #define ENDSTOPPULLUPS 1 // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
-const bool ENDSTOPS_INVERTING = true; //set to true to invert the logic of the endstops
+const bool ENDSTOPS_INVERTING = false; //set to true to invert the logic of the endstops
 //If your axes are only moving in one direction, make sure the endstops are connected properly.
 //If your axes move in one direction ONLY when the endstops are triggered, set ENDSTOPS_INVERTING to true here
 
@@ -64,7 +64,7 @@ const bool DISABLE_Z = true;
 const bool DISABLE_E = false;
 
 // Inverting axis direction
-const bool INVERT_X_DIR = true;
+const bool INVERT_X_DIR = false;
 const bool INVERT_Y_DIR = false;
 const bool INVERT_Z_DIR = true;
 const bool INVERT_E_DIR = false;
@@ -76,14 +76,14 @@ const bool INVERT_E_DIR = false;
 #define Z_HOME_DIR -1
 
 const bool min_software_endstops = false; //If true, axis won't move to coordinates less than zero.
-const bool max_software_endstops = true;  //If true, axis won't move to coordinates greater than the defined lengths below.
-const int X_MAX_LENGTH = 170;
-const int Y_MAX_LENGTH = 180;
-const int Z_MAX_LENGTH = 90;
+const bool max_software_endstops = false;  //If true, axis won't move to coordinates greater than the defined lengths below.
+const int X_MAX_LENGTH = 210;
+const int Y_MAX_LENGTH = 210;
+const int Z_MAX_LENGTH = 140;
 
 //// MOVEMENT SETTINGS
 const int NUM_AXIS = 4; // The axis order in all axis related arrays is X, Y, Z, E
-float max_feedrate[] = {200000, 200000, 250, 500000};
+float max_feedrate[] = {200000, 200000, 150, 500000};
 float homing_feedrate[] = {1500,1500,120};
 bool axis_relative_modes[] = {false, false, false, false};
 
@@ -99,7 +99,7 @@ float retract_acceleration = 7000; // Normal acceleration mm/s^2
 float max_xy_jerk = 20.0*60;
 float max_z_jerk = 0.4*60;
 float max_start_speed_units_per_second[] = {10.0,10.0,0.2,10.0};
-long max_acceleration_units_per_sq_second[] = {7000,7000,200,10000}; // X, Y, Z and E max acceleration in mm/s^2 for printing moves or retracts
+long max_acceleration_units_per_sq_second[] = {500,500,50,500}; // X, Y, Z and E max acceleration in mm/s^2 for printing moves or retracts
 #endif
 
 // Machine UUID
