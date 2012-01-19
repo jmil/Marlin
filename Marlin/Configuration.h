@@ -30,7 +30,9 @@
 // MakerGear Hybrid Prusa Mendel:
 // Z axis value is for .9 stepper(if you have 1.8 steppers for Z, you need to use 2272.7272)
 //float axis_steps_per_unit[] = {104.987, 104.987, 4545.4544, 1487};
-float axis_steps_per_unit[] = {44.4444,44.4444,1511.7872,1487};
+
+//BRONZEBOT
+float axis_steps_per_unit[] = {80, 20, 421.0526315789, 40.256872550};
 //// Endstop Settings
 #define ENDSTOPPULLUPS 1 // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
