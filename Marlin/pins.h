@@ -60,8 +60,8 @@
 
 #define HEATER_0_PIN        6
 #define TEMP_0_PIN          0    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
-#define HEATER_1_PIN        -1
-#define HEATER_2_PIN        -1
+
+
 #endif
 
 
@@ -133,8 +133,7 @@
 
 #define HEATER_0_PIN       14
 #define TEMP_0_PIN          4 //D27   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
-#define HEATER_1_PIN        -1
-#define HEATER_2_PIN        -1
+
 /*  Unused (1) (2) (3) 4 5 6 7 8 9 10 11 12 13 (14) (15) (16) 17 (18) (19) (20) (21) (22) (23) 24 (25) (26) (27) 28 (29) (30) (31)  */
 
 
@@ -195,8 +194,7 @@
 
 #define HEATER_0_PIN    -1
 #define TEMP_0_PIN      -1    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
-#define HEATER_1_PIN        -1
-#define HEATER_2_PIN        -1
+
 
 
 
@@ -257,10 +255,8 @@
 
 #define HEATER_0_PIN       10
 #define HEATER_1_PIN       8
-#define HEATER_2_PIN        -1
 #define TEMP_0_PIN         13   // ANALOG NUMBERING
 #define TEMP_1_PIN         14   // ANALOG NUMBERING
-#define TEMP_2_PIN         -1   // ANALOG NUMBERING
 
 
 #else // RAMPS_V_1_1 or RAMPS_V_1_2 as default
@@ -305,10 +301,9 @@
   #define HEATER_1_PIN      8    // RAMPS 1.1
   #define FAN_PIN           9    // RAMPS 1.1
 #endif
-#define HEATER_2_PIN        -1
+
 #define TEMP_0_PIN          2    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
 #define TEMP_1_PIN          1    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
-#define TEMP_2_PIN          -1    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
 #endif
 
 // SPI for Max6675 Thermocouple 
@@ -366,8 +361,7 @@
 
 #define HEATER_0_PIN        6
 #define TEMP_0_PIN          0    // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!!
-#define HEATER_1_PIN        -1
-#define HEATER_2_PIN        -1
+
 
 #endif
 
@@ -410,13 +404,12 @@
     #define TEMP_0_PIN      5     //changed @ rkoeppl 20110410
     #define HEATER_0_PIN    14    //changed @ rkoeppl 20110410
     #define HEATER_1_PIN    -1    //changed @ rkoeppl 20110410
-    #define HEATER_2_PIN        -1
+    
     
     #define SDPOWER          -1
     #define SDSS          17
     #define LED_PIN         -1    //changed @ rkoeppl 20110410
     #define TEMP_1_PIN      -1    //changed @ rkoeppl 20110410
-    #define TEMP_2_PIN      -1
     #define FAN_PIN         -1    //changed @ rkoeppl 20110410
     #define PS_ON_PIN       -1    //changed @ rkoeppl 20110410
     //our pin for debugging.
@@ -427,9 +420,7 @@
     #define TX_ENABLE_PIN	12
     #define RX_ENABLE_PIN	13
 
-    
 #endif
-
 /****************************************************************************************
 * Sanguinololu pin assignment
 *
@@ -491,205 +482,16 @@
 
 #define TEMP_0_PIN          7   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!! (pin 33 extruder)
 #define TEMP_1_PIN          6   // MUST USE ANALOG INPUT NUMBERING NOT DIGITAL OUTPUT NUMBERING!!!!!!!!! (pin 34 bed)
-#define TEMP_2_PIN         -1
-#define SDPOWER            -1
-#define SDSS               31
-#define HEATER_2_PIN       -1
-
-#endif
-
-
-#if MOTHERBOARD == 7
-#define KNOWN_BOARD
-/*****************************************************************
-* Ultimaker pin assignment
-******************************************************************/
-
-#ifndef __AVR_ATmega1280__
- #ifndef __AVR_ATmega2560__
- #error Oops!  Make sure you have 'Arduino Mega' selected from the 'Tools -> Boards' menu.
- #endif
-#endif
-
-#define X_STEP_PIN 25
-#define X_DIR_PIN 23
-#define X_MIN_PIN 22
-#define X_MAX_PIN 24
-#define X_ENABLE_PIN 27
-
-#define Y_STEP_PIN 31
-#define Y_DIR_PIN 33
-#define Y_MIN_PIN 26
-#define Y_MAX_PIN 28
-#define Y_ENABLE_PIN 29
-
-#define Z_STEP_PIN 37 
-#define Z_DIR_PIN 39
-#define Z_MIN_PIN 30
-#define Z_MAX_PIN 32
-#define Z_ENABLE_PIN 35
-
-#define HEATER_1_PIN 4 
-#define TEMP_1_PIN 11  
-
-#define EXTRUDER_0_STEP_PIN 43 
-#define EXTRUDER_0_DIR_PIN 45
-#define EXTRUDER_0_ENABLE_PIN 41
-#define HEATER_0_PIN  2
-#define TEMP_0_PIN 8   
-
-#define EXTRUDER_1_STEP_PIN 49 
-#define EXTRUDER_1_DIR_PIN 47
-#define EXTRUDER_1_ENABLE_PIN 51
-#define EXTRUDER_1_HEATER_PIN 3
-#define EXTRUDER_1_TEMPERATURE_PIN 10 
-#define HEATER_2_PIN 51
-#define TEMP_2_PIN 3
-
-
-
-#define E_STEP_PIN         EXTRUDER_0_STEP_PIN
-#define E_DIR_PIN          EXTRUDER_0_DIR_PIN
-#define E_ENABLE_PIN       EXTRUDER_0_ENABLE_PIN
-
-#define SDPOWER            -1
-#define SDSS               53
-#define LED_PIN            13
-#define FAN_PIN            7
-#define PS_ON_PIN          12
-#define KILL_PIN           -1
-
-#ifdef ULTRA_LCD
-
-  #ifdef NEWPANEL
-  //arduino pin witch triggers an piezzo beeper
-    #define BEEPER 18
-
-    #define LCD_PINS_RS 20 
-    #define LCD_PINS_ENABLE 17
-    #define LCD_PINS_D4 16
-    #define LCD_PINS_D5 21 
-    #define LCD_PINS_D6 5
-    #define LCD_PINS_D7 6
-    
-    //buttons are directly attached
-    #define BTN_EN1 40
-    #define BTN_EN2 42
-    #define BTN_ENC 19  //the click
-    
-    #define BLEN_C 2
-    #define BLEN_B 1
-    #define BLEN_A 0
-    
-    #define SDCARDDETECT 38
-    
-      //encoder rotation values
-    #define encrot0 0
-    #define encrot1 2
-    #define encrot2 3
-    #define encrot3 1
-  #else //old style panel with shift register
-    //arduino pin witch triggers an piezzo beeper
-    #define BEEPER 18
-
-    //buttons are attached to a shift register
-    #define SHIFT_CLK 38
-    #define SHIFT_LD 42
-    #define SHIFT_OUT 40
-    #define SHIFT_EN 17
-    
-    #define LCD_PINS_RS 16 
-    #define LCD_PINS_ENABLE 5
-    #define LCD_PINS_D4 6
-    #define LCD_PINS_D5 21 
-    #define LCD_PINS_D6 20
-    #define LCD_PINS_D7 19
-    
-    //encoder rotation values
-    #define encrot0 0
-    #define encrot1 2
-    #define encrot2 3
-    #define encrot3 1
-
-    
-    //bits in the shift register that carry the buttons for:
-    // left up center down right red
-    #define BL_LE 7
-    #define BL_UP 6
-    #define BL_MI 5
-    #define BL_DW 4
-    #define BL_RI 3
-    #define BL_ST 2
-
-    #define BLEN_B 1
-    #define BLEN_A 0
-  #endif 
-#endif //ULTRA_LCD
-
-#endif
-
-/****************************************************************************************
-* Teensylu 0.7 pin assingments (ATMEGA90USB)
-* Requires the Teensyduino software with Teensy2.0++ selected in arduino IDE!
-****************************************************************************************/
-#if MOTHERBOARD == 8
-#define MOTHERBOARD 8
-#define KNOWN_BOARD 1
-
-
-#define X_STEP_PIN          0  
-#define X_DIR_PIN           1  
-#define X_ENABLE_PIN       39 
-#define X_MIN_PIN          13 
-#define X_MAX_PIN          -1    
-
-#define Y_STEP_PIN          2  
-#define Y_DIR_PIN           3 
-#define Y_ENABLE_PIN       38 
-#define Y_MIN_PIN          14 
-#define Y_MAX_PIN          -1    
-
-#define Z_STEP_PIN          4
-#define Z_DIR_PIN           5 
-#define Z_ENABLE_PIN       23 
-#define Z_MIN_PIN          15 
-#define Z_MAX_PIN          -1    
-
-#define E_STEP_PIN          6  
-#define E_DIR_PIN           7 
-#define E_ENABLE_PIN       19 
-
-
-
-#define HEATER_0_PIN       21  // Extruder
-#define HEATER_1_PIN       20  // Bed
-#define HEATER_2_PIN       -1
-#define FAN_PIN            22  // Fan   
-
-#define TEMP_0_PIN          7  // Extruder
-#define TEMP_1_PIN          6  // Bed
-#define TEMP_2_PIN         -1
-
-#define SDPOWER            -1
-#define SDSS                8
-#define LED_PIN            -1
-#define PS_ON_PIN          -1
-#define KILL_PIN           -1 
-#define ALARM_PIN          -1
-
-#ifndef SDSUPPORT
-// these pins are defined in the SD library if building with SD support  
-  #define SCK_PIN           9 
-  #define MISO_PIN         11 
-  #define MOSI_PIN         10 
-#endif
-#endif
+#define SDPOWER          -1
+#define SDSS          31
 
 #ifndef KNOWN_BOARD
 #error Unknown MOTHERBOARD value in configuration.h
 #endif
 
+#endif
+
 //List of pins which to ignore when asked to change by gcode, 0 and 1 are RX and TX, do not mess with those!
-#define SENSITIVE_PINS {0, 1, X_STEP_PIN, X_DIR_PIN, X_ENABLE_PIN, X_MIN_PIN, X_MAX_PIN, Y_STEP_PIN, Y_DIR_PIN, Y_ENABLE_PIN, Y_MIN_PIN, Y_MAX_PIN, Z_STEP_PIN, Z_DIR_PIN, Z_ENABLE_PIN, Z_MIN_PIN, Z_MAX_PIN, E_STEP_PIN, E_DIR_PIN, E_ENABLE_PIN, LED_PIN, PS_ON_PIN, HEATER_0_PIN, HEATER_1_PIN, HEATER_2_PIN, FAN_PIN, TEMP_0_PIN, TEMP_1_PIN, TEMP_2_PIN}
+const int sensitive_pins[] = {0, 1, X_STEP_PIN, X_DIR_PIN, X_ENABLE_PIN, X_MIN_PIN, X_MAX_PIN, Y_STEP_PIN, Y_DIR_PIN, Y_ENABLE_PIN, Y_MIN_PIN, Y_MAX_PIN, Z_STEP_PIN, Z_DIR_PIN, Z_ENABLE_PIN, Z_MIN_PIN, Z_MAX_PIN, E_STEP_PIN, E_DIR_PIN, E_ENABLE_PIN, LED_PIN, PS_ON_PIN, HEATER_0_PIN, HEATER_1_PIN, FAN_PIN, TEMP_0_PIN, TEMP_1_PIN};
 
 #endif
