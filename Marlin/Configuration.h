@@ -190,7 +190,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 //#define INVERT_E_DIR true   // for direct drive extruder v9 set to true, for geared extruder set to false
 
 #define INVERT_X_DIR false     // for Mendel set to false, for Orca set to true
-#define INVERT_Y_DIR true    // for Mendel set to true, for Orca set to false
+#define INVERT_Y_DIR false    // for Mendel set to true, for Orca set to false
 #define INVERT_Z_DIR false     // for Mendel set to false, for Orca set to true
 #define INVERT_E_DIR true    // for direct drive extruder v9 set to true, for geared extruder set to false
 
@@ -236,7 +236,18 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 //    we had before
 //    UGH -- GO BACK TO 1/4 STEPPING FOR EXTRUDER. LOSING STEPS at 1/16th stepping
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {52.913851209772999, 52.913851209772999, 2560, 124.530011898862}                    
+// jmil SloateBot
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   {52.913851209772999, 52.913851209772999, 2560, 124.530011898862}                    
+
+//BRONZEBOT
+//float axis_steps_per_unit[] = {80, 20, 421.0526315789, 40.256872550};
+
+//RRWT NextFab Mendel
+// 1/16th stepping on Z
+// 1/16th stepping on X and Y
+// 1/4 stepping on Extruder
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80, 80, 2560, 124.530011898862}                    
+
 
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   {78.7402,78.7402,200*8/3,760*1.1}                    // default steps per unit for ultimaker 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {40, 40, 3333.92, 67} //sells mendel with v9 extruder
