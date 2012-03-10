@@ -29,7 +29,7 @@
 // Ultimaker = 7
 // Teensylu = 8
 // Gen3+ =9
-#define MOTHERBOARD 7
+#define MOTHERBOARD 3
 
 //===========================================================================
 //=============================Thermal Settings  ============================
@@ -47,7 +47,7 @@
 // 6 is EPCOS 100k
 // 7 is 100k Honeywell thermistor 135-104LAG-J01
 
-#define TEMP_SENSOR_0 -1
+#define TEMP_SENSOR_0 0
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 0
@@ -192,7 +192,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 //#define ULTRA_LCD  //general lcd support, also 16x2
 //#define SDSUPPORT // Enable SD Card Support in Hardware Console
 
-#define ULTIPANEL
+//#define ULTIPANEL
 #ifdef ULTIPANEL
   #define NEWPANEL  //enable this if you have a click-encoder panel
   #define SDSUPPORT
