@@ -421,11 +421,14 @@ void check_axes_activity() {
   unsigned char e_active = 0;
   unsigned char fan_speed = 0;
   unsigned char tail_fan_speed = 0;
+  unsigned char valve_pressure = 0;
+  unsigned char tail_valve_pressure = 0;
   block_t *block;
 
   if(block_buffer_tail != block_buffer_head) {
     uint8_t block_index = block_buffer_tail;
     tail_fan_speed = block_buffer[block_index].fan_speed;
+    tail_valve_pressure = block_buffer[block_index].valve_pressure;
     while(block_index != block_buffer_head) {
       block = &block_buffer[block_index];
       if(block->steps_x != 0) x_active++;
@@ -433,12 +436,16 @@ void check_axes_activity() {
       if(block->steps_z != 0) z_active++;
       if(block->steps_e != 0) e_active++;
       if(block->fan_speed != 0) fan_speed++;
+      if(block->valve_pressure != 0) valve_pressure++;
       block_index = (block_index+1) & (BLOCK_BUFFER_SIZE - 1);
     }
   }
   else {
     #if FAN_PIN > -1
       if (FanSpeed != 0) analogWrite(FAN_PIN,FanSpeed); // If buffer is empty use current fan speed
+    #endif
+    #if VALVE_PIN > -1
+      if (ValvePressure != 0) analogWrite(VALVE_PIN,ValvePressure); // If buffer is empty use current valve pressure
     #endif
   }
   if((DISABLE_X) && (x_active == 0)) disable_x();
@@ -448,8 +455,14 @@ void check_axes_activity() {
   #if FAN_PIN > -1
     if((FanSpeed == 0) && (fan_speed ==0)) analogWrite(FAN_PIN, 0);
   #endif
+  #if VALVE_PIN > -1
+    if((ValvePressure == 0) && (valve_pressure ==0)) analogWrite(VALVE_PIN, 0);
+  #endif
   if (FanSpeed != 0 && tail_fan_speed !=0) { 
     analogWrite(FAN_PIN,tail_fan_speed);
+  }
+  if (ValvePressure != 0 && tail_valve_pressure !=0) { 
+    analogWrite(VALVE_PIN,tail_valve_pressure);
   }
 }
 
@@ -515,6 +528,7 @@ void plan_buffer_line(const float &x, const float &y, const float &z, const floa
   if (block->step_event_count <=dropsegments) { return; };
 
   block->fan_speed = FanSpeed;
+  block->valve_pressure = ValvePressure;
   
   // Compute direction bits for this block 
   block->direction_bits = 0;

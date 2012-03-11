@@ -407,6 +407,8 @@
   #define HEATER_0_PIN     10    // RAMPS 1.1
   #define HEATER_BED_PIN    8    // RAMPS 1.1
   #define FAN_PIN           9    // RAMPS 1.1
+  #define PRESSURE_PIN      6    // RAMPS 1.2
+  #define VALVE_PIN         7    // RAMPS 1.2
 #endif
 #define HEATER_1_PIN        -1
 #define HEATER_2_PIN        -1

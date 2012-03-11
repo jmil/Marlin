@@ -176,6 +176,8 @@ extern bool axis_relative_modes[];
 extern float current_position[NUM_AXIS] ;
 extern float add_homeing[3];
 extern unsigned char FanSpeed;
+extern unsigned char ValvePressure;
+extern unsigned char ExtruderPressure;
 
 // Handling multiple extruders pins
 extern uint8_t active_extruder;
