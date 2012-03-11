@@ -543,8 +543,8 @@ void tp_init()
   #if (FAN_PIN > -1) 
     SET_OUTPUT(FAN_PIN);
   #endif  
-  #if (PRESSURE_PIN > -1) 
-    SET_OUTPUT(PRESSURE_PIN);
+  #if (EXTRUDER_PRESSURE_PIN > -1) 
+    SET_OUTPUT(EXTRUDER_PRESSURE_PIN);
   #endif  
   #if (VALVE_PIN > -1) 
     SET_OUTPUT(VALVE_PIN);

@@ -61,6 +61,7 @@ typedef struct {
   unsigned long acceleration_st;                     // acceleration steps/sec^2
   unsigned long fan_speed;
   unsigned long valve_pressure;
+  unsigned long extruder_pressure;
   volatile char busy;
 } block_t;
 

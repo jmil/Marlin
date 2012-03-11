@@ -985,6 +985,19 @@ void process_commands()
         break;
     #endif //VALVE_PIN
 
+    #if EXTRUDER_PRESSURE_PIN > -1
+      case 128: //M128 Extruder Pressure Opened
+        if (code_seen('S')){
+           ExtruderPressure=constrain(code_value(),0,255);
+        }
+        else {
+          ExtruderPressure=255;			
+        }
+        break;
+      case 129: //M129 Extruder Pressure Closed
+        ExtruderPressure = 0;
+        break;
+    #endif //EXTRUDER_PRESSURE_PIN
 
     #if (PS_ON_PIN > -1)
       case 80: // M80 - ATX Power On

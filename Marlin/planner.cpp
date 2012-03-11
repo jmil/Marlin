@@ -423,12 +423,15 @@ void check_axes_activity() {
   unsigned char tail_fan_speed = 0;
   unsigned char valve_pressure = 0;
   unsigned char tail_valve_pressure = 0;
+  unsigned char extruder_pressure = 0;
+  unsigned char tail_extruder_pressure = 0;
   block_t *block;
 
   if(block_buffer_tail != block_buffer_head) {
     uint8_t block_index = block_buffer_tail;
     tail_fan_speed = block_buffer[block_index].fan_speed;
     tail_valve_pressure = block_buffer[block_index].valve_pressure;
+    tail_extruder_pressure = block_buffer[block_index].extruder_pressure;
     while(block_index != block_buffer_head) {
       block = &block_buffer[block_index];
       if(block->steps_x != 0) x_active++;
@@ -437,6 +440,7 @@ void check_axes_activity() {
       if(block->steps_e != 0) e_active++;
       if(block->fan_speed != 0) fan_speed++;
       if(block->valve_pressure != 0) valve_pressure++;
+      if(block->extruder_pressure != 0) extruder_pressure++;
       block_index = (block_index+1) & (BLOCK_BUFFER_SIZE - 1);
     }
   }
@@ -447,6 +451,9 @@ void check_axes_activity() {
     #if VALVE_PIN > -1
       if (ValvePressure != 0) analogWrite(VALVE_PIN,ValvePressure); // If buffer is empty use current valve pressure
     #endif
+    #if EXTRUDER_PRESSURE_PIN > -1
+      if (ExtruderPressure != 0) analogWrite(EXTRUDER_PRESSURE_PIN,ExtruderPressure); // If buffer is empty use current extruder pressure
+    #endif
   }
   if((DISABLE_X) && (x_active == 0)) disable_x();
   if((DISABLE_Y) && (y_active == 0)) disable_y();
@@ -455,15 +462,18 @@ void check_axes_activity() {
   #if FAN_PIN > -1
     if((FanSpeed == 0) && (fan_speed ==0)) analogWrite(FAN_PIN, 0);
   #endif
-  #if VALVE_PIN > -1
-    if((ValvePressure == 0) && (valve_pressure ==0)) analogWrite(VALVE_PIN, 0);
-  #endif
   if (FanSpeed != 0 && tail_fan_speed !=0) { 
     analogWrite(FAN_PIN,tail_fan_speed);
   }
+  #if VALVE_PIN > -1
+    if((ValvePressure == 0) && (valve_pressure ==0)) analogWrite(VALVE_PIN, 0);
+  #endif
   if (ValvePressure != 0 && tail_valve_pressure !=0) { 
     analogWrite(VALVE_PIN,tail_valve_pressure);
   }
+  #if EXTRUDER_PRESSURE_PIN > -1
+    if((ExtruderPressure == 0) && (extruder_pressure ==0)) analogWrite(EXTRUDER_PRESSURE_PIN, 0);
+  #endif
 }
 
 
@@ -529,6 +539,7 @@ void plan_buffer_line(const float &x, const float &y, const float &z, const floa
 
   block->fan_speed = FanSpeed;
   block->valve_pressure = ValvePressure;
+  block->extruder_pressure = ExtruderPressure;
   
   // Compute direction bits for this block 
   block->direction_bits = 0;
