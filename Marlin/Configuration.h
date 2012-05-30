@@ -8,8 +8,8 @@
 //User specified version info of THIS file to display in [Pronterface, etc] terminal window during startup.
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to THIS file by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "2012-05-29" //Personal revision number for changes to THIS file.
-#define STRING_CONFIG_H_AUTHOR "jmil_ChenLab_BlackMamba" //Who made the changes.
+#define STRING_VERSION_CONFIG_H "2012-05-30" //Personal revision number for changes to THIS file.
+#define STRING_CONFIG_H_AUTHOR "jmil_ChenLab_BlackMamba_with_RAMPS_1.4" //Who made the changes.
 
 // This determines the communication speed of the printer
 #define BAUDRATE 250000
@@ -29,7 +29,7 @@
 // Ultimaker = 7
 // Teensylu = 8
 // Gen3+ =9
-#define MOTHERBOARD 3
+#define MOTHERBOARD 33
 
 //===========================================================================
 //=============================Thermal Settings  ============================
@@ -47,10 +47,10 @@
 // 6 is EPCOS 100k
 // 7 is 100k Honeywell thermistor 135-104LAG-J01
 
-#define TEMP_SENSOR_0 0
+#define TEMP_SENSOR_0 1
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
-#define TEMP_SENSOR_BED 0
+#define TEMP_SENSOR_BED 1
 
 // Actual temperature must be close to target for this long before M109 returns success
 #define TEMP_RESIDENCY_TIME 10	// (seconds)
@@ -128,7 +128,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 // Disables axis when it's not being used.
 #define DISABLE_X false
 #define DISABLE_Y false
-#define DISABLE_Z false
+#define DISABLE_Z true
 #define DISABLE_E false // For all extruders
 
 #define INVERT_X_DIR false    // for Mendel set to false, for Orca set to true
@@ -146,8 +146,8 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 #define min_software_endstops false //If true, axis won't move to coordinates less than HOME_POS.
 #define max_software_endstops true  //If true, axis won't move to coordinates greater than the defined lengths below.
-#define X_MAX_LENGTH 240
-#define Y_MAX_LENGTH 240
+#define X_MAX_LENGTH 280
+#define Y_MAX_LENGTH 280
 #define Z_MAX_LENGTH 280
 
 // The position of the homing switches. Use MAX_LENGTH * -0.5 if the center should be 0, 0, 0
@@ -169,11 +169,11 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 // Circumference = Pi * Diameter in mm per revolution. We have 0.9 degrees per step at 1/16th stepping gives 6400 steps per revolution. So we have 6400 steps/revolution * 1 revolution / (Pi * 20.37 mm pitch diameter) ==   steps per mm
 // Z-axis: we are using MakerGear 1/4" leadscrews for the moment. It is 1/4"-16, which means 16 threads per inch, which means 1/16th of an inch per revolution. This means .0625" per revolution, which means 1.5875 mm per revolution, so we have 6400 steps/revolution * 1 revolution/1.5875 which gives: 4031.49606299213 steps per mm
 // E-axis, ignore for now
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 4031.49606299213, 124.530011898862}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 1007.87401574803, 124.530011898862}
 
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {78.7402,78.7402,200*8/3,760*1.1}                    // default steps per unit for ultimaker 
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 45}    // (mm/sec)    
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 45, 45}    // (mm/sec)    
 //SLOATEBOT
 #define DEFAULT_MAX_ACCELERATION      {500,500,50,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,100,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.

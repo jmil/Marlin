@@ -279,6 +279,10 @@
 #define SDSS               53
 #define LED_PIN            13
 
+#define EXTRUDER_PRESSURE_PIN      6    // RAMPS 1.4 with RAMMS
+#define VALVE_PIN         7    // RAMPS 1.4 with RAMMS
+
+
 #if MOTHERBOARD == 33
 #define FAN_PIN            9 // (Sprinter config)
 #else
