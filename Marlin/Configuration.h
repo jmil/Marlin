@@ -105,7 +105,7 @@
 //can be software-disabled for whatever purposes by
 #define PREVENT_DANGEROUS_EXTRUDE
 #define EXTRUDE_MINTEMP 170
-#define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
+#define EXTRUDE_MAXLENGTH 2*(X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
 
 //===========================================================================
 //=============================Mechanical Settings===========================
@@ -115,9 +115,9 @@
 #define ENDSTOPPULLUPS // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
 
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
-const bool X_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
-const bool Y_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
-const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
+const bool X_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
+const bool Y_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
+const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
 #define X_ENABLE_ON 0
@@ -146,9 +146,9 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 #define min_software_endstops false //If true, axis won't move to coordinates less than HOME_POS.
 #define max_software_endstops true  //If true, axis won't move to coordinates greater than the defined lengths below.
-#define X_MAX_LENGTH 280
-#define Y_MAX_LENGTH 280
-#define Z_MAX_LENGTH 280
+#define X_MAX_LENGTH 265
+#define Y_MAX_LENGTH 233
+#define Z_MAX_LENGTH 190
 
 // The position of the homing switches. Use MAX_LENGTH * -0.5 if the center should be 0, 0, 0
 #define X_HOME_POS 0
@@ -157,7 +157,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {50*60, 50*60, 4*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {100*60, 100*60, 1100, 0}  // set the homing speeds (mm/min)
 
 // default settings 
 // SLOATEBOT
@@ -168,12 +168,12 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 // X and Y axes use MISUMI GPA32GT2060-B-P5. We have 32 teeth 20.37 mm Pitch Diameter
 // Circumference = Pi * Diameter in mm per revolution. We have 0.9 degrees per step at 1/16th stepping gives 6400 steps per revolution. So we have 6400 steps/revolution * 1 revolution / (Pi * 20.37 mm pitch diameter) ==   steps per mm
 // Z-axis: we are using MakerGear 1/4" leadscrews for the moment. It is 1/4"-16, which means 16 threads per inch, which means 1/16th of an inch per revolution. This means .0625" per revolution, which means 1.5875 mm per revolution, so we have 6400 steps/revolution * 1 revolution/1.5875 which gives: 4031.49606299213 steps per mm
-// E-axis, ignore for now
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 1007.87401574803, 124.530011898862}
+// E-axis, MakerGear Stepper Plastruder with 8 mm shaft attachment, Bill20r3 says it is 1380 steps per mm at 1/16th stepping, 1380/2 at 1/8th stepping, 1380/4 at 1/4 stepping, 1380/8 at 1/2 stepping, 1380/16 at full stepping
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 1007.87401574803, 1380/4}
 
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {78.7402,78.7402,200*8/3,760*1.1}                    // default steps per unit for ultimaker 
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 45, 45}    // (mm/sec)    
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 19, 45}    // (mm/sec)    
 //SLOATEBOT
 #define DEFAULT_MAX_ACCELERATION      {500,500,50,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,100,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
