@@ -201,7 +201,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {50*60, 50*60, 10*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {100*60, 100*60, 10*60, 0}  // set the homing speeds (mm/min)
 
 // default settings 
 
@@ -221,7 +221,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 200000}    // (mm/sec)    
-#define DEFAULT_MAX_ACCELERATION      {500,500,50,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_MAX_ACCELERATION      {500,500,30,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,30,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
@@ -243,8 +243,8 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // Values 0-255
 // RAMBO 135 = ~0.75A, 185 = ~1A
 #define DIGIPOT_MOTOR_CURRENT
-#define X_CURRENT 185
-#define Y_CURRENT 185
+#define X_CURRENT 135
+#define Y_CURRENT 135
 #define Z_CURRENT 255
 #define E0_CURRENT 135
 #define E1_CURRENT 135
