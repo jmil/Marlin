@@ -387,6 +387,7 @@ ISR(TIMER1_COMPA_vect)
       WRITE(Z_DIR_PIN,INVERT_Z_DIR);
       WRITE(E0_DIR_PIN,INVERT_Z_DIR);
       count_direction[Z_AXIS]=-1;
+      count_direction[E_AXIS]=-1;
       CHECK_ENDSTOPS
       {
         #if Z_MIN_PIN > -1
@@ -404,6 +405,7 @@ ISR(TIMER1_COMPA_vect)
       WRITE(Z_DIR_PIN,!INVERT_Z_DIR);
       WRITE(E0_DIR_PIN,!INVERT_Z_DIR);
       count_direction[Z_AXIS]=1;
+      count_direction[E_AXIS]=1;
       CHECK_ENDSTOPS
       {
         #if Z_MAX_PIN > -1
