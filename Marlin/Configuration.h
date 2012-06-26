@@ -201,7 +201,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {100*60, 100*60, 15*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {100*60, 100*60, 10*60, 0}  // set the homing speeds (mm/min)
 
 // default settings 
 
@@ -218,10 +218,10 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 1380/4}
 
 //Sugar Printing Use E0 as Z2
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 1007.8740157480325, 1007.8740157480325}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 503.93700787401625, 503.93700787401625}
 
 
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 19, 200000}    // (mm/sec)    
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 200000}    // (mm/sec)    
 #define DEFAULT_MAX_ACCELERATION      {500,500,30,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,30,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
@@ -236,19 +236,19 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // Microstep setting (Only functional when microstep pins are connected to MCU (set to 1,2,4,16 for RAMBO)
 #define XMICROSTEP16
 #define YMICROSTEP16
-#define ZMICROSTEP4
-#define E0MICROSTEP4
+#define ZMICROSTEP2
+#define E0MICROSTEP2
 #define E1MICROSTEP16
 
 // Motor Current setting (Only functional when motor current pins are connected to digipot)
 // Values 0-255
 // RAMBO 135 = ~0.75A, 185 = ~1A
 #define DIGIPOT_MOTOR_CURRENT
-#define X_CURRENT 220
-#define Y_CURRENT 220
-#define Z_CURRENT 220
-#define E0_CURRENT 220
-#define E1_CURRENT 220
+#define X_CURRENT 230
+#define Y_CURRENT 230
+#define Z_CURRENT 230
+#define E0_CURRENT 230
+#define E1_CURRENT 230
 
 //===========================================================================
 //=============================Additional Features===========================
