@@ -37,6 +37,7 @@
 #include "EEPROMwrite.h"
 #include "language.h"
 #include "pins_arduino.h"
+#include <SPI.h>
 
 #define VERSION_STRING  "1.0.0 RC2"
 
@@ -268,7 +269,9 @@ void setup()
 { 
   setup_powerhold();
   MYSERIAL.begin(BAUDRATE);
+  init_motors();
   SERIAL_PROTOCOLLNPGM("start");
+  
   SERIAL_ECHO_START;
 
   // Check startup - does nothing if bootloader sets MCUSR to 0
@@ -567,6 +570,9 @@ bool code_seen(char code)
     feedrate = 0.0;\
     endstops_hit_on_purpose();\
   }
+
+
+
 
 void process_commands()
 {

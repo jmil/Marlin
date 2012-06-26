@@ -28,7 +28,7 @@
 #include "ultralcd.h"
 #include "language.h"
 #include "speed_lookuptable.h"
-
+#include <SPI.h>
 
 
 //===========================================================================
@@ -655,6 +655,7 @@ void st_init()
     SET_OUTPUT(E2_ENABLE_PIN);
     if(!E_ENABLE_ON) WRITE(E2_ENABLE_PIN,HIGH);
   #endif
+ 
 
   //endstops and pullups
   
@@ -823,5 +824,233 @@ void quickStop()
     plan_discard_current_block();
   current_block = NULL;
   ENABLE_STEPPER_DRIVER_INTERRUPT();
+}
+
+int digitalPotWrite(int address, int value) {
+  // take the SS pin low to select the chip:
+  digitalWrite(DIGIPOTSS_PIN,LOW);
+  //  send in the address and value via SPI:
+  SPI.transfer(address);
+  SPI.transfer(value);
+  // take the SS pin high to de-select the chip:
+  digitalWrite(DIGIPOTSS_PIN,HIGH);
+}
+
+void init_motors()
+{
+  #ifdef DIGIPOT_MOTOR_CURRENT // SPI digipot controlling motor current
+    #if DIGIPOTSS_PIN > -1
+      pinMode(DIGIPOTSS_PIN, OUTPUT);
+      SPI.begin();
+      digitalPotWrite(X_DIGIPOT_CH, X_CURRENT);
+      digitalPotWrite(Y_DIGIPOT_CH, Y_CURRENT);
+      digitalPotWrite(Z_DIGIPOT_CH, Z_CURRENT);
+      digitalPotWrite(E0_DIGIPOT_CH, E0_CURRENT);
+      digitalPotWrite(E1_DIGIPOT_CH, E1_CURRENT);
+  #endif
+#endif //DIGIPOT
+ 
+  //initialize microstep pins
+	
+  #ifdef XMICROSTEP16
+	#if X_MS1_PIN > -1
+	  SET_OUTPUT(X_MS1_PIN);
+	  WRITE(X_MS1_PIN,HIGH);
+	#endif
+	#if X_MS2_PIN > -1
+	  SET_OUTPUT(X_MS2_PIN);
+	  WRITE(X_MS2_PIN,HIGH);
+	#endif
+  #endif
+  #ifdef XMICROSTEP4
+	#if X_MS1_PIN > -1
+	  SET_OUTPUT(X_MS1_PIN);
+	  WRITE(X_MS1_PIN,LOW);
+	#endif
+	#if X_MS2_PIN > -1
+	  SET_OUTPUT(X_MS2_PIN);
+	  WRITE(X_MS2_PIN,HIGH);
+	#endif
+  #endif
+  #ifdef XMICROSTEP2
+    #if X_MS1_PIN > -1
+	  SET_OUTPUT(X_MS1_PIN);
+	  WRITE(X_MS1_PIN,HIGH);
+	#endif
+	#if X_MS2_PIN > -1
+	  SET_OUTPUT(X_MS2_PIN);
+	  WRITE(X_MS2_PIN,LOW);
+	#endif
+  #endif
+  #ifdef XMICROSTEP1
+    #if X_MS1_PIN > -1
+	  SET_OUTPUT(X_MS1_PIN);
+	  WRITE(X_MS1_PIN,LOW);
+	#endif
+	#if X_MS2_PIN > -1
+	  SET_OUTPUT(X_MS2_PIN);
+	  WRITE(X_MS2_PIN,LOW);
+	#endif
+  #endif
+  #ifdef YMICROSTEP16
+	#if Y_MS1_PIN > -1
+	  SET_OUTPUT(Y_MS1_PIN);
+	  WRITE(Y_MS1_PIN,HIGH);
+	#endif
+	#if Y_MS2_PIN > -1
+	  SET_OUTPUT(Y_MS2_PIN);
+	  WRITE(Y_MS2_PIN,HIGH);
+	#endif
+  #endif
+  #ifdef YMICROSTEP4
+	#if Y_MS1_PIN > -1
+	  SET_OUTPUT(Y_MS1_PIN);
+	  WRITE(Y_MS1_PIN,LOW);
+	#endif
+	#if Y_MS2_PIN > -1
+	  SET_OUTPUT(Y_MS2_PIN);
+	  WRITE(Y_MS2_PIN,HIGH);
+	#endif
+  #endif
+  #ifdef YMICROSTEP2
+    #if Y_MS1_PIN > -1
+	  SET_OUTPUT(Y_MS1_PIN);
+	  WRITE(Y_MS1_PIN,HIGH);
+	#endif
+	#if Y_MS2_PIN > -1
+	  SET_OUTPUT(Y_MS2_PIN);
+	  WRITE(Y_MS2_PIN,LOW);
+	#endif
+  #endif
+  #ifdef YMICROSTEP1
+    #if Y_MS1_PIN > -1
+	  SET_OUTPUT(Y_MS1_PIN);
+	  WRITE(Y_MS1_PIN,LOW);
+	#endif
+	#if Y_MS2_PIN > -1
+	  SET_OUTPUT(Y_MS2_PIN);
+	  WRITE(Y_MS2_PIN,LOW);
+	#endif
+  #endif
+  #ifdef ZMICROSTEP16
+	#if Z_MS1_PIN > -1
+	  SET_OUTPUT(Z_MS1_PIN);
+	  WRITE(Z_MS1_PIN,HIGH);
+	#endif
+	#if Z_MS2_PIN > -1
+	  SET_OUTPUT(Z_MS2_PIN);
+	  WRITE(Z_MS2_PIN,HIGH);
+	#endif
+  #endif
+  #ifdef ZMICROSTEP4
+	#if Z_MS1_PIN > -1
+	  SET_OUTPUT(Z_MS1_PIN);
+	  WRITE(Z_MS1_PIN,LOW);
+	#endif
+	#if Z_MS2_PIN > -1
+	  SET_OUTPUT(Z_MS2_PIN);
+	  WRITE(Z_MS2_PIN,HIGH);
+	#endif
+  #endif
+  #ifdef ZMICROSTEP2
+    #if Z_MS1_PIN > -1
+	  SET_OUTPUT(Z_MS1_PIN);
+	  WRITE(Z_MS1_PIN,HIGH);
+	#endif
+	#if Z_MS2_PIN > -1
+	  SET_OUTPUT(Z_MS2_PIN);
+	  WRITE(Z_MS2_PIN,LOW);
+	#endif
+  #endif
+  #ifdef ZMICROSTEP1
+    #if Z_MS1_PIN > -1
+	  SET_OUTPUT(Z_MS1_PIN);
+	  WRITE(Z_MS1_PIN,LOW);
+	#endif
+	#if Z_MS2_PIN > -1
+	  SET_OUTPUT(Z_MS2_PIN);
+	  WRITE(Z_MS2_PIN,LOW);
+	#endif
+  #endif
+  #ifdef E0MICROSTEP16
+	#if E0_MS1_PIN > -1
+	  SET_OUTPUT(E0_MS1_PIN);
+	  WRITE(E0_MS1_PIN,HIGH);
+	#endif
+	#if E0_MS2_PIN > -1
+	  SET_OUTPUT(E0_MS2_PIN);
+	  WRITE(E0_MS2_PIN,HIGH);
+	#endif
+  #endif
+  #ifdef E0MICROSTEP4
+	#if E0_MS1_PIN > -1
+	  SET_OUTPUT(E0_MS1_PIN);
+	  WRITE(E0_MS1_PIN,LOW);
+	#endif
+	#if E0_MS2_PIN > -1
+	  SET_OUTPUT(E0_MS2_PIN);
+	  WRITE(E0_MS2_PIN,HIGH);
+	#endif
+  #endif
+  #ifdef E0MICROSTEP2
+    #if E0_MS1_PIN > -1
+	  SET_OUTPUT(E0_MS1_PIN);
+	  WRITE(E0_MS1_PIN,HIGH);
+	#endif
+	#if E0_MS2_PIN > -1
+	  SET_OUTPUT(E0_MS2_PIN);
+	  WRITE(E0_MS2_PIN,LOW);
+	#endif
+  #endif
+  #ifdef E0MICROSTEP1
+    #if E0_MS1_PIN > -1
+	  SET_OUTPUT(E0_MS1_PIN);
+	  WRITE(E0_MS1_PIN,LOW);
+	#endif
+	#if E0_MS2_PIN > -1
+	  SET_OUTPUT(E0_MS2_PIN);
+	  WRITE(E0_MS2_PIN,LOW);
+	#endif
+  #endif
+  #ifdef E1MICROSTEP16
+	#if E1_MS1_PIN > -1
+	  SET_OUTPUT(E1_MS1_PIN);
+	  WRITE(E1_MS1_PIN,HIGH);
+	#endif
+	#if E1_MS2_PIN > -1
+	  SET_OUTPUT(E1_MS2_PIN);
+	  WRITE(E1_MS2_PIN,HIGH);
+	#endif
+  #endif
+  #ifdef E1MICROSTEP4
+	#if E1_MS1_PIN > -1
+	  SET_OUTPUT(E1_MS1_PIN);
+	  WRITE(E1_MS1_PIN,LOW);
+	#endif
+	#if E1_MS2_PIN > -1
+	  SET_OUTPUT(E1_MS2_PIN);
+	  WRITE(E1_MS2_PIN,HIGH);
+	#endif
+  #endif
+  #ifdef E1MICROSTEP2
+    #if E1_MS1_PIN > -1
+	  SET_OUTPUT(E1_MS1_PIN);
+	  WRITE(E1_MS1_PIN,HIGH);
+	#endif
+	#if E1_MS2_PIN > -1
+	  SET_OUTPUT(E1_MS2_PIN);
+	  WRITE(E1_MS2_PIN,LOW);
+	#endif
+  #endif
+  #ifdef E1MICROSTEP1
+    #if E1_MS1_PIN > -1
+	  SET_OUTPUT(E1_MS1_PIN);
+	  WRITE(E1_MS1_PIN,LOW);
+	#endif
+	#if E1_MS2_PIN > -1
+	  SET_OUTPUT(E1_MS2_PIN);
+	  WRITE(E1_MS2_PIN,LOW);
+	#endif
+  #endif //microstep16
 }
 
