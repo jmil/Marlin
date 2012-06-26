@@ -236,7 +236,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define XMICROSTEP16
 #define YMICROSTEP16
 #define ZMICROSTEP1
-#define E0MICROSTEP16
+#define E0MICROSTEP1
 #define E1MICROSTEP16
 
 // Motor Current setting (Only functional when motor current pins are connected to digipot)
@@ -245,7 +245,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define DIGIPOT_MOTOR_CURRENT
 #define X_CURRENT 135
 #define Y_CURRENT 135
-#define Z_CURRENT 255
+#define Z_CURRENT 135
 #define E0_CURRENT 135
 #define E1_CURRENT 135
 
