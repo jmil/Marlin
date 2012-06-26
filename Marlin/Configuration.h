@@ -208,19 +208,20 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,6667.84,912}  // default steps per unit for ultimaker 
 
 
-// BlackMamba
+// Komodo Printer
 //0.9 degree stepper motors, 1/16th stepping
 // X and Y axes use MISUMI GPA32GT2060-B-P5. We have 32 teeth 20.37 mm Pitch Diameter
 // Circumference = Pi * Diameter in mm per revolution. We have 0.9 degrees per step at 1/16th stepping gives 6400 steps per revolution. So we have 6400 steps/revolution * 1 revolution / (Pi * 20.37 mm pitch diameter) ==   steps per mm
 // Z-axis: we are using MakerGear 1/4" leadscrews for the moment. It is 1/4"-16, which means 16 threads per inch, which means 1/16th of an inch per revolution. This means .0625" per revolution, which means 1.5875 mm per revolution, so we have 6400 steps/revolution * 1 revolution/1.5875 which gives: 4031.49606299213 steps per mm
 // E-axis, MakerGear Stepper Plastruder with 8 mm shaft attachment, Bill20r3 says it is 1380 steps per mm at 1/16th stepping, 1380/2 at 1/8th stepping, 1380/4 at 1/4 stepping, 1380/8 at 1/2 stepping, 1380/16 at full stepping
 // FOR MAKERGEAR:
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 1380/4}
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 1380/4}
+
+//Sugar Printing Use E0 as Z2
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 251.968503937008125}
 
 
-
-
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 200000}    // (mm/sec)    
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 19, 200000}    // (mm/sec)    
 #define DEFAULT_MAX_ACCELERATION      {500,500,30,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,30,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
@@ -245,8 +246,8 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define DIGIPOT_MOTOR_CURRENT
 #define X_CURRENT 135
 #define Y_CURRENT 135
-#define Z_CURRENT 135
-#define E0_CURRENT 135
+#define Z_CURRENT 255
+#define E0_CURRENT 255
 #define E1_CURRENT 135
 
 //===========================================================================
