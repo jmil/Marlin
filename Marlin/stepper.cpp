@@ -466,8 +466,10 @@ ISR(TIMER1_COMPA_vect)
       counter_z += current_block->steps_z;
       if (counter_z > 0) {
         WRITE(Z_STEP_PIN, HIGH);
+        WRITE(E0_STEP_PIN, HIGH);
         counter_z -= current_block->step_event_count;
         WRITE(Z_STEP_PIN, LOW);
+        WRITE(E0_STEP_PIN, LOW);
         count_position[Z_AXIS]+=count_direction[Z_AXIS];
       }
 
@@ -642,6 +644,8 @@ void st_init()
   #if (Z_ENABLE_PIN > -1)
     SET_OUTPUT(Z_ENABLE_PIN);
     if(!Z_ENABLE_ON) WRITE(Z_ENABLE_PIN,HIGH);
+    SET_OUTPUT(E0_ENABLE_PIN);
+    if(!Z_ENABLE_ON) WRITE(E0_ENABLE_PIN,HIGH);
   #endif
   #if (E0_ENABLE_PIN > -1)
     SET_OUTPUT(E0_ENABLE_PIN);
@@ -714,6 +718,8 @@ void st_init()
   #if (Z_STEP_PIN > -1) 
     SET_OUTPUT(Z_STEP_PIN);
     if(!Z_ENABLE_ON) WRITE(Z_ENABLE_PIN,HIGH);
+    SET_OUTPUT(E0_STEP_PIN);
+    if(!Z_ENABLE_ON) WRITE(E0_ENABLE_PIN,HIGH);
   #endif  
   #if (E0_STEP_PIN > -1) 
     SET_OUTPUT(E0_STEP_PIN);
