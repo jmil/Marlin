@@ -221,7 +221,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 251.968503937008125}
 
 
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 19, 200000}    // (mm/sec)    
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 200000}    // (mm/sec)    
 #define DEFAULT_MAX_ACCELERATION      {500,500,30,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,30,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
