@@ -385,6 +385,7 @@ ISR(TIMER1_COMPA_vect)
 
     if ((out_bits & (1<<Z_AXIS)) != 0) {   // -direction
       WRITE(Z_DIR_PIN,INVERT_Z_DIR);
+      WRITE(E0_DIR_PIN,INVERT_Z_DIR);
       count_direction[Z_AXIS]=-1;
       CHECK_ENDSTOPS
       {
@@ -401,6 +402,7 @@ ISR(TIMER1_COMPA_vect)
     }
     else { // +direction
       WRITE(Z_DIR_PIN,!INVERT_Z_DIR);
+      WRITE(E0_DIR_PIN,!INVERT_Z_DIR);
       count_direction[Z_AXIS]=1;
       CHECK_ENDSTOPS
       {
@@ -620,6 +622,7 @@ void st_init()
   #endif
   #if Z_DIR_PIN > -1 
     SET_OUTPUT(Z_DIR_PIN);
+    SET_OUTPUT(E0_DIR_PIN);
   #endif
   #if E0_DIR_PIN > -1 
     SET_OUTPUT(E0_DIR_PIN);
