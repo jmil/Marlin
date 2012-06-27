@@ -442,12 +442,18 @@ void check_axes_activity() {
   unsigned char z_active = 0;
   unsigned char e_active = 0;
   unsigned char fan_speed = 0;
+  unsigned char valve_pressure = 0;
+  unsigned char e_to_p_pressure = 0;
   unsigned char tail_fan_speed = 0;
+  unsigned char tail_valve_pressure = 0;
+  unsigned char tail_e_to_p_pressure = 0;
   block_t *block;
 
   if(block_buffer_tail != block_buffer_head) {
     uint8_t block_index = block_buffer_tail;
     tail_fan_speed = block_buffer[block_index].fan_speed;
+    tail_valve_pressure = block_buffer[block_index].valve_pressure;
+    tail_e_to_p_pressure = block_buffer[block_index].e_to_p_pressure;
     while(block_index != block_buffer_head) {
       block = &block_buffer[block_index];
       if(block->steps_x != 0) x_active++;
@@ -462,6 +468,16 @@ void check_axes_activity() {
 #if FAN_PIN > -1
     if (FanSpeed != 0){
       analogWrite(FAN_PIN,FanSpeed); // If buffer is empty use current fan speed
+    }
+#endif
+#if HEATER_1_PIN > -1
+    if (ValvePressure != 0){
+      analogWrite(HEATER_1_PIN,ValvePressure); // If buffer is empty use current fan speed
+    }
+#endif
+#if HEATER_2_PIN > -1
+    if (EtoPPressure != 0){
+      analogWrite(HEATER_2_PIN,EtoPPressure); // If buffer is empty use current fan speed
     }
 #endif
   }
@@ -480,6 +496,24 @@ void check_axes_activity() {
 
   if (FanSpeed != 0 && tail_fan_speed !=0) { 
     analogWrite(FAN_PIN,tail_fan_speed);
+  }
+#endif
+#if HEATER_1_PIN > -1
+  if((ValvePressure == 0) && (valve_pressure ==0)) {
+    analogWrite(HEATER_1_PIN, 0);
+  }
+
+  if (ValvePressure != 0 && tail_valve_pressure !=0) { 
+    analogWrite(HEATER_1_PIN,tail_valve_pressure);
+  }
+#endif
+#if HEATER_2_PIN > -1
+  if((EtoPPressure == 0) && (e_to_p_pressure ==0)) {
+    analogWrite(HEATER_2_PIN, 0);
+  }
+
+  if (EtoPPressure != 0 && tail_e_to_p_pressure !=0) { 
+    analogWrite(HEATER_2_PIN,tail_e_to_p_pressure);
   }
 #endif
 #ifdef AUTOTEMP
@@ -553,6 +587,8 @@ void plan_buffer_line(const float &x, const float &y, const float &z, const floa
   };
 
   block->fan_speed = FanSpeed;
+  block->valve_pressure = ValvePressure;
+  block->e_to_p_pressure = EtoPPressure;
 
   // Compute direction bits for this block 
   block->direction_bits = 0;

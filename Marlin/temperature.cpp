@@ -563,6 +563,18 @@ void tp_init()
     setPwmFrequency(FAN_PIN, 1); // No prescaling. Pwm frequency = F_CPU/256/8
     #endif
   #endif  
+  #if (HEATER_1_PIN > -1) 
+    SET_OUTPUT(HEATER_1_PIN);
+    #ifdef FAST_PWM_FAN
+    setPwmFrequency(HEATER_1_PIN, 1); // No prescaling. Pwm frequency = F_CPU/256/8
+    #endif
+  #endif  
+  #if (HEATER_2_PIN > -1) 
+    SET_OUTPUT(HEATER_2_PIN);
+    #ifdef FAST_PWM_FAN
+    setPwmFrequency(HEATER_2_PIN, 1); // No prescaling. Pwm frequency = F_CPU/256/8
+    #endif
+  #endif  
 
   #ifdef HEATER_0_USES_MAX6675
     #ifndef SDSUPPORT

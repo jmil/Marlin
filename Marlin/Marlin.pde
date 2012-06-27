@@ -67,6 +67,10 @@
 // M107 - Fan off
 // M109 - Wait for extruder current temp to reach target temp.
 // M114 - Display current position
+// M126 - valve open
+// M127 - valve closed
+// M128 - EtoP air pressure
+// M129 - EtoP pressure off
 
 //Custom M Codes
 // M17  - Enable/Power all stepper motors
@@ -144,6 +148,8 @@ float current_position[NUM_AXIS] = { 0.0, 0.0, 0.0, 0.0 };
 float add_homeing[3]={0,0,0};
 uint8_t active_extruder = 0;
 unsigned char FanSpeed=0;
+unsigned char ValvePressure=0;
+unsigned char EtoPPressure=0;
 
 #ifdef FWRETRACT
   bool autoretract_enabled=true;
@@ -1076,6 +1082,38 @@ void process_commands()
         FanSpeed = 0;
         break;
     #endif //FAN_PIN
+
+	// PWM for HEATER_1_PIN
+    #if HEATER_1_PIN > -1
+      case 126: //M126 valve open
+        if (code_seen('S')){
+           ValvePressure=constrain(code_value(),0,255);
+        }
+        else {
+          ValvePressure=255;			
+        }
+        break;
+      case 127: //M127 valve closed
+        ValvePressure = 0;
+        break;
+    #endif //HEATER_1_PIN
+
+	// PWM for HEATER_2_PIN
+    #if HEATER_2_PIN > -1
+      case 128: //M128 valve open
+        if (code_seen('S')){
+           EtoPPressure=constrain(code_value(),0,255);
+        }
+        else {
+          EtoPPressure=255;			
+        }
+        break;
+      case 129: //M129 valve closed
+        EtoPPressure = 0;
+        break;
+    #endif //HEATER_2_PIN
+
+
 
     #if (PS_ON_PIN > -1)
       case 80: // M80 - ATX Power On
