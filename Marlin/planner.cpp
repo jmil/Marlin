@@ -461,6 +461,8 @@ void check_axes_activity() {
       if(block->steps_z != 0) z_active++;
       if(block->steps_e != 0) e_active++;
       if(block->fan_speed != 0) fan_speed++;
+      if(block->valve_pressure != 0) valve_pressure++;
+      if(block->e_to_p_pressure != 0) e_to_p_pressure++;
       block_index = (block_index+1) & (BLOCK_BUFFER_SIZE - 1);
     }
   }
