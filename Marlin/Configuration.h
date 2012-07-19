@@ -180,7 +180,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // Z-axis: we are using MakerGear 1/4" leadscrews for the moment. It is 1/4"-16, which means 16 threads per inch, which means 1/16th of an inch per revolution. This means .0625" per revolution, which means 1.5875 mm per revolution, so we have 6400 steps/revolution * 1 revolution/1.5875 which gives: 4031.49606299213 steps per mm
 // E-axis, MakerGear Stepper Plastruder with 8 mm shaft attachment, Bill20r3 says it is 1380 steps per mm at 1/16th stepping, 1380/2 at 1/8th stepping, 1380/4 at 1/4 stepping, 1380/8 at 1/2 stepping, 1380/16 at full stepping
 // FOR MAKERGEAR:
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 1380/4}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 1007.87401574803, 1380/4}
 
 // FOR MISUMI LEADSCREWS: we have 1.5 mm per revolution, with 400 steps per rev at full stepping, so 400/1.5 at full stepping, 800/1.5 for 1/2, 1600/1.5 for 1/4, 3200/1.5 for 1/8th, and 6400/1.5 for 1/16th stepping
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 1007.87401574803, 1600/1.5}
