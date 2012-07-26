@@ -1160,19 +1160,17 @@
 #define HEATER_2_PIN 6
 #define TEMP_2_PIN -1
 
-// SWITCH E0 and E1 BECAUSE E1 NEEDS TO BE Z2
-#define E1_STEP_PIN         34
-#define E1_DIR_PIN          43
-#define E1_ENABLE_PIN       26
-#define E1_MS1_PIN 65
-#define E1_MS2_PIN 66
+#define E0_STEP_PIN         34
+#define E0_DIR_PIN          43
+#define E0_ENABLE_PIN       26
+#define E0_MS1_PIN 65
+#define E0_MS2_PIN 66
 
-// SWITCH E0 and E1 BECAUSE E1 NEEDS TO BE Z2
-#define E0_STEP_PIN         33
-#define E0_DIR_PIN          42
-#define E0_ENABLE_PIN       25
-#define E0_MS1_PIN 63
-#define E0_MS2_PIN 64
+#define E1_STEP_PIN         33
+#define E1_DIR_PIN          42
+#define E1_ENABLE_PIN       25
+#define E1_MS1_PIN 63
+#define E1_MS2_PIN 64
 // Switch Y and E1 since Y is broken
 // #define E1_STEP_PIN         36
 // #define E1_DIR_PIN          49

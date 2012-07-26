@@ -385,7 +385,7 @@ ISR(TIMER1_COMPA_vect)
 
     if ((out_bits & (1<<Z_AXIS)) != 0) {   // -direction
       WRITE(Z_DIR_PIN,INVERT_Z_DIR);
-      WRITE(E0_DIR_PIN,INVERT_Z_DIR);
+      WRITE(E1_DIR_PIN,INVERT_Z_DIR);
       count_direction[Z_AXIS]=-1;
       CHECK_ENDSTOPS
       {
@@ -402,7 +402,7 @@ ISR(TIMER1_COMPA_vect)
     }
     else { // +direction
       WRITE(Z_DIR_PIN,!INVERT_Z_DIR);
-      WRITE(E0_DIR_PIN,!INVERT_Z_DIR);
+      WRITE(E1_DIR_PIN,!INVERT_Z_DIR);
       count_direction[Z_AXIS]=1;
       CHECK_ENDSTOPS
       {
@@ -420,11 +420,11 @@ ISR(TIMER1_COMPA_vect)
 
     #ifndef ADVANCE
       if ((out_bits & (1<<E_AXIS)) != 0) {  // -direction
-        //REV_E_DIR();
+        REV_E_DIR();
         count_direction[E_AXIS]=-1;
       }
       else { // +direction
-        //NORM_E_DIR();
+        NORM_E_DIR();
         count_direction[E_AXIS]=1;
       }
     #endif //!ADVANCE
@@ -468,10 +468,10 @@ ISR(TIMER1_COMPA_vect)
       counter_z += current_block->steps_z;
       if (counter_z > 0) {
         WRITE(Z_STEP_PIN, HIGH);
-        WRITE(E0_STEP_PIN, HIGH);
+        WRITE(E1_STEP_PIN, HIGH);
         counter_z -= current_block->step_event_count;
         WRITE(Z_STEP_PIN, LOW);
-        WRITE(E0_STEP_PIN, LOW);
+        WRITE(E1_STEP_PIN, LOW);
         count_position[Z_AXIS]+=count_direction[Z_AXIS];
       }
 
@@ -622,7 +622,7 @@ void st_init()
   #endif
   #if Z_DIR_PIN > -1 
     SET_OUTPUT(Z_DIR_PIN);
-    SET_OUTPUT(E0_DIR_PIN);
+    SET_OUTPUT(E1_DIR_PIN);
   #endif
   #if E0_DIR_PIN > -1 
     SET_OUTPUT(E0_DIR_PIN);
@@ -647,8 +647,8 @@ void st_init()
   #if (Z_ENABLE_PIN > -1)
     SET_OUTPUT(Z_ENABLE_PIN);
     if(!Z_ENABLE_ON) WRITE(Z_ENABLE_PIN,HIGH);
-    SET_OUTPUT(E0_ENABLE_PIN);
-    if(!Z_ENABLE_ON) WRITE(E0_ENABLE_PIN,HIGH);
+    SET_OUTPUT(E1_ENABLE_PIN);
+    if(!Z_ENABLE_ON) WRITE(E1_ENABLE_PIN,HIGH);
   #endif
   #if (E0_ENABLE_PIN > -1)
     SET_OUTPUT(E0_ENABLE_PIN);
@@ -721,8 +721,8 @@ void st_init()
   #if (Z_STEP_PIN > -1) 
     SET_OUTPUT(Z_STEP_PIN);
     if(!Z_ENABLE_ON) WRITE(Z_ENABLE_PIN,HIGH);
-    SET_OUTPUT(E0_STEP_PIN);
-    if(!Z_ENABLE_ON) WRITE(E0_ENABLE_PIN,HIGH);
+    SET_OUTPUT(E1_STEP_PIN);
+    if(!Z_ENABLE_ON) WRITE(E1_ENABLE_PIN,HIGH);
   #endif  
   #if (E0_STEP_PIN > -1) 
     SET_OUTPUT(E0_STEP_PIN);

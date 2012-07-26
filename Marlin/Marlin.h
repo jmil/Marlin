@@ -122,8 +122,8 @@ void manage_inactivity(byte debug);
 #endif
 
 #if Z_ENABLE_PIN > -1
-  #define enable_z() {WRITE(Z_ENABLE_PIN, Z_ENABLE_ON); WRITE(E0_ENABLE_PIN, Z_ENABLE_ON);}
-  #define disable_z() {WRITE(Z_ENABLE_PIN,!Z_ENABLE_ON); WRITE(E0_ENABLE_PIN,!Z_ENABLE_ON);}
+  #define enable_z() {WRITE(Z_ENABLE_PIN, Z_ENABLE_ON); WRITE(E1_ENABLE_PIN, Z_ENABLE_ON);}
+  #define disable_z() {WRITE(Z_ENABLE_PIN,!Z_ENABLE_ON); WRITE(E1_ENABLE_PIN,!Z_ENABLE_ON);}
 #else
   #define enable_z() ;
   #define disable_z() ;

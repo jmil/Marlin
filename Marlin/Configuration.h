@@ -218,7 +218,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 1380/4}
 
 //Sugar Printing Use E0 as Z2
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 503.93700787401625, 503.93700787401625}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 503.93700787401625, 124.530011898862}
 
 
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 200000}    // (mm/sec)    
@@ -237,8 +237,8 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define XMICROSTEP16
 #define YMICROSTEP16
 #define ZMICROSTEP2
-#define E0MICROSTEP2
-#define E1MICROSTEP16
+#define E0MICROSTEP4
+#define E1MICROSTEP2
 
 // Motor Current setting (Only functional when motor current pins are connected to digipot)
 // Values 0-255
