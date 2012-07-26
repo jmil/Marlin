@@ -190,7 +190,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // Sugar Printing
 //#define X_MAX_LENGTH 247
 #define X_MAX_LENGTH 235
-#define Y_MAX_LENGTH 247
+#define Y_MAX_LENGTH 230
 #define Z_MAX_LENGTH 196
 
 
@@ -201,7 +201,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {100*60, 100*60, 10*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {6000, 6000, 10*60, 0}  // set the homing speeds (mm/min)
 
 // default settings 
 
@@ -218,7 +218,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 1380/4}
 
 //Sugar Printing Use E0 as Z2
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 503.93700787401625, 124.530011898862}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {50.0044985659365, 50.0044985659365, 503.93700787401625, 124.530011898862}
 
 
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 200000}    // (mm/sec)    
