@@ -189,9 +189,9 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 // Sugar Printing
 //#define X_MAX_LENGTH 247
-#define X_MAX_LENGTH 235
-#define Y_MAX_LENGTH 230
-#define Z_MAX_LENGTH 196
+#define X_MAX_LENGTH 273
+#define Y_MAX_LENGTH 266
+#define Z_MAX_LENGTH 192
 
 
 // The position of the homing switches. Use MAX_LENGTH * -0.5 if the center should be 0, 0, 0
@@ -212,14 +212,24 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 //0.9 degree stepper motors, 1/16th stepping
 // X and Y axes use MISUMI GPA32GT2060-B-P5. We have 32 teeth 20.37 mm Pitch Diameter
 // Circumference = Pi * Diameter in mm per revolution. We have 0.9 degrees per step at 1/16th stepping gives 6400 steps per revolution. So we have 6400 steps/revolution * 1 revolution / (Pi * 20.37 mm pitch diameter) ==   steps per mm
+// IF USING PULLEYS FROM TECHPALADIN:
+// WE HAVE 36 teeth, 27.6 mm flange diameter, 17.5 mm length, GT2 Pulley, PITCH DIAMETER IS 23 mm
+
 // Z-axis: we are using MakerGear 1/4" leadscrews for the moment. It is 1/4"-16, which means 16 threads per inch, which means 1/16th of an inch per revolution. This means .0625" per revolution, which means 1.5875 mm per revolution, so we have 6400 steps/revolution * 1 revolution/1.5875 which gives: 4031.49606299213 steps per mm
 // E-axis, MakerGear Stepper Plastruder with 8 mm shaft attachment, Bill20r3 says it is 1380 steps per mm at 1/16th stepping, 1380/2 at 1/8th stepping, 1380/4 at 1/4 stepping, 1380/8 at 1/2 stepping, 1380/16 at full stepping
 // FOR MAKERGEAR:
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 1380/4}
 
-//Sugar Printing Use E0 as Z2
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {50.0044985659365, 50.0044985659365, 503.93700787401625, 124.530011898862}
+// #define DEFAULT_AXIS_STEPS_PER_UNIT   {50.0044985659365, 50.0044985659365, 503.93700787401625, 124.530011898862}
 
+// GOING BACK GO GREGS HINGED WADES EXTRUDER
+// E-axis: 7.25 mm is diameter of hobbed bolt, so C = 7.25pi per rev. At 1/2 stepping this is: 800/(7.25pi), but we have hinged wade extruder, so this is converted 43/10 ratio. I think these are all wrong anyway... just do 4x the quarter stepping we had before
+
+
+// Extrusion = 800/(7.25*pi)*43/10 gear ratio, gives: 151.03255289704
+
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   {50.0044985659365, 50.0044985659365, 503.93700787401625, 800/7.25/3.1415926*43/10}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*4/3.14159265358979/23, 400*4/3.14159265358979/23, 503.93700787401625, 800/7.25/3.14159265358979*43/10}
 
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 200000}    // (mm/sec)    
 #define DEFAULT_MAX_ACCELERATION      {500,500,30,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
@@ -234,8 +244,8 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define DEFAULT_EJERK                 5.0    // (mm/sec)
 
 // Microstep setting (Only functional when microstep pins are connected to MCU (set to 1,2,4,16 for RAMBO)
-#define XMICROSTEP16
-#define YMICROSTEP16
+#define XMICROSTEP4
+#define YMICROSTEP4
 #define ZMICROSTEP2
 #define E0MICROSTEP4
 #define E1MICROSTEP2
