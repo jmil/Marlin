@@ -8,8 +8,9 @@
 //User specified version info of THIS file to display in [Pronterface, etc] terminal window during startup.
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to THIS file by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "2012-07-25" //Personal revision number for changes to THIS file.
-#define STRING_CONFIG_H_AUTHOR "jmil Komodo with Rambo" //Who made the changes.
+#define STRING_VERSION_CONFIG_H "2012-08-13" //Personal revision number for changes to THIS file.
+#define STRING_CONFIG_H_AUTHOR "ChenLab Komodo with RAMBO SECOND PROTOTYPE, NOTE: FIRMWARE USES E1 terminal as Z2 motor" //Who made the changes.
+
 
 // This determines the communication speed of the printer
 #define BAUDRATE 250000
@@ -187,11 +188,19 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 //#define Y_MAX_LENGTH 205
 //#define Z_MAX_LENGTH 200
 
+// CHENLAB KOMODO RAMBO0
 // Sugar Printing
 //#define X_MAX_LENGTH 247
-#define X_MAX_LENGTH 273
-#define Y_MAX_LENGTH 266
-#define Z_MAX_LENGTH 192
+#define X_MAX_LENGTH 235
+#define Y_MAX_LENGTH 247
+#define Z_MAX_LENGTH 196
+
+// HIVE KOMODO PRINTING, RAMBO SECOND PROTOTYPE
+//// Sugar Printing
+////#define X_MAX_LENGTH 247
+//#define X_MAX_LENGTH 273
+//#define Y_MAX_LENGTH 266
+//#define Z_MAX_LENGTH 192
 
 
 // The position of the homing switches. Use MAX_LENGTH * -0.5 if the center should be 0, 0, 0
@@ -218,9 +227,14 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // Z-axis: we are using MakerGear 1/4" leadscrews for the moment. It is 1/4"-16, which means 16 threads per inch, which means 1/16th of an inch per revolution. This means .0625" per revolution, which means 1.5875 mm per revolution, so we have 6400 steps/revolution * 1 revolution/1.5875 which gives: 4031.49606299213 steps per mm
 // E-axis, MakerGear Stepper Plastruder with 8 mm shaft attachment, Bill20r3 says it is 1380 steps per mm at 1/16th stepping, 1380/2 at 1/8th stepping, 1380/4 at 1/4 stepping, 1380/8 at 1/2 stepping, 1380/16 at full stepping
 // FOR MAKERGEAR:
-//#define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 1380/4}
-
+// RAMBO FIRST PROTOTYPE:
+// #define DEFAULT_AXIS_STEPS_PER_UNIT   {100.008997131873, 100.008997131873, 251.968503937008125, 1380/4}
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   {50.0044985659365, 50.0044985659365, 503.93700787401625, 124.530011898862}
+
+// RAMBO SECOND PROTOTYPE, CHENLAB, PLASTIC PRINTING WITH MAKERGEAR HOT END:
+// USE E1 PORT AS Z2, FTW
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*4/3.14159265358979/20.37, 400*4/3.14159265358979/20.37, 503.93700787401625, 1380/4}
+
 
 // GOING BACK GO GREGS HINGED WADES EXTRUDER
 // E-axis: 7.25 mm is diameter of hobbed bolt, so C = 7.25pi per rev. At 1/2 stepping this is: 800/(7.25pi), but we have hinged wade extruder, so this is converted 43/10 ratio. I think these are all wrong anyway... just do 4x the quarter stepping we had before
@@ -228,8 +242,8 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 // Extrusion = 800/(7.25*pi)*43/10 gear ratio, gives: 151.03255289704
 
-//#define DEFAULT_AXIS_STEPS_PER_UNIT   {50.0044985659365, 50.0044985659365, 503.93700787401625, 800/7.25/3.1415926*43/10}
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*4/3.14159265358979/23, 400*4/3.14159265358979/23, 503.93700787401625, 800/7.25/3.14159265358979*43/10}
+// HIVE KOMODO PRINTER, RAMBO SECOND PROTOTYPE
+// #define DEFAULT_AXIS_STEPS_PER_UNIT   {400*4/3.14159265358979/23, 400*4/3.14159265358979/23, 503.93700787401625, 800/7.25/3.14159265358979*43/10}
 
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 200000}    // (mm/sec)    
 #define DEFAULT_MAX_ACCELERATION      {500,500,30,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
@@ -257,7 +271,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define X_CURRENT 230
 #define Y_CURRENT 230
 #define Z_CURRENT 230
-#define E0_CURRENT 230
+#define E0_CURRENT 185
 #define E1_CURRENT 230
 
 //===========================================================================
