@@ -8,12 +8,12 @@
 //User specified version info of THIS file to display in [Pronterface, etc] terminal window during startup.
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to THIS file by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "2012-08-13" //Personal revision number for changes to THIS file.
-#define STRING_CONFIG_H_AUTHOR "ChenLab Komodo with RAMBO SECOND PROTOTYPE, NOTE: FIRMWARE USES E1 terminal as Z2 motor" //Who made the changes.
+#define STRING_VERSION_CONFIG_H "2012-08-20" //Personal revision number for changes to THIS file.
+#define STRING_CONFIG_H_AUTHOR "ChenLab Komodo with RAMBO SECOND PROTOTYPE, USE 115200 Connection Speed. NOTE: FIRMWARE USES E1 terminal as Z2 motor" //Who made the changes.
 
 
 // This determines the communication speed of the printer
-#define BAUDRATE 250000
+#define BAUDRATE 115200
 //#define BAUDRATE 115200
 
 //// The following define selects which electronics board you have. Please choose the one that matches your setup
@@ -166,7 +166,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // Disables axis when it's not being used.
 #define DISABLE_X false
 #define DISABLE_Y false
-#define DISABLE_Z false
+#define DISABLE_Z true
 #define DISABLE_E false // For all extruders
 
 #define INVERT_X_DIR true    // for Mendel set to false, for Orca set to true
@@ -190,9 +190,10 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 // CHENLAB KOMODO RAMBO0
 // Sugar Printing
-//#define X_MAX_LENGTH 247
-#define X_MAX_LENGTH 235
-#define Y_MAX_LENGTH 247
+//#define X_MAX_LENGTH 235
+// Plastic Printing
+#define X_MAX_LENGTH 247
+#define Y_MAX_LENGTH 259
 #define Z_MAX_LENGTH 196
 
 // HIVE KOMODO PRINTING, RAMBO SECOND PROTOTYPE
@@ -210,7 +211,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {6000, 6000, 5*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {6000, 6000, 10*60, 0}  // set the homing speeds (mm/min)
 
 // default settings 
 
@@ -233,7 +234,8 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 // RAMBO SECOND PROTOTYPE, CHENLAB, PLASTIC PRINTING WITH MAKERGEAR HOT END:
 // USE E1 PORT AS Z2, FTW
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*4/3.14159265358979/20.37, 400*4/3.14159265358979/20.37, 503.93700787401625, 1380/4}
+// AS PER JOHNNYR-- 1/16th stepping setting is actually only 1/8th stepping since the drivers can only do 1/8th stepping
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*8/3.14159265358979/20.37, 400*8/3.14159265358979/20.37, 503.93700787401625, 1380/4}
 
 
 // GOING BACK GO GREGS HINGED WADES EXTRUDER
@@ -245,7 +247,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // HIVE KOMODO PRINTER, RAMBO SECOND PROTOTYPE
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   {400*4/3.14159265358979/23, 400*4/3.14159265358979/23, 503.93700787401625, 800/7.25/3.14159265358979*43/10}
 
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 200000}    // (mm/sec)    
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 200000}    // (mm/sec)    
 #define DEFAULT_MAX_ACCELERATION      {500,500,30,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,30,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
@@ -258,8 +260,8 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define DEFAULT_EJERK                 5.0    // (mm/sec)
 
 // Microstep setting (Only functional when microstep pins are connected to MCU (set to 1,2,4,16 for RAMBO)
-#define XMICROSTEP4
-#define YMICROSTEP4
+#define XMICROSTEP16
+#define YMICROSTEP16
 #define ZMICROSTEP2
 #define E0MICROSTEP4
 #define E1MICROSTEP2
@@ -270,9 +272,9 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define DIGIPOT_MOTOR_CURRENT
 #define X_CURRENT 230
 #define Y_CURRENT 230
-#define Z_CURRENT 230
+#define Z_CURRENT 255
 #define E0_CURRENT 185
-#define E1_CURRENT 230
+#define E1_CURRENT 255
 
 //===========================================================================
 //=============================Additional Features===========================
