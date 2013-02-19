@@ -12,7 +12,7 @@
 #define STRING_CONFIG_H_AUTHOR "jmil Komodo with Rambo" //Who made the changes.
 
 // This determines the communication speed of the printer
-#define BAUDRATE 250000
+#define BAUDRATE 115200
 //#define BAUDRATE 115200
 
 //// The following define selects which electronics board you have. Please choose the one that matches your setup
@@ -122,7 +122,7 @@
 #define PREVENT_LENGTHY_EXTRUDE
 
 #define EXTRUDE_MINTEMP 130
-#define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
+#define EXTRUDE_MAXLENGTH 2*(X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
 
 //===========================================================================
 //=============================Mechanical Settings===========================
@@ -229,23 +229,27 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // Extrusion = 800/(7.25*pi)*43/10 gear ratio, gives: 151.03255289704
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {50.0044985659365, 50.0044985659365, 503.93700787401625, 800/7.25/3.1415926*43/10}
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*4/3.14159265358979/23, 400*4/3.14159265358979/23, 503.93700787401625, 800/7.25/3.14159265358979*43/10}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*8/3.14159265358979/23, 400*8/3.14159265358979/23, 503.93700787401625, 800/7.25/3.14159265358979*43/10}
 
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 200000}    // (mm/sec)    
-#define DEFAULT_MAX_ACCELERATION      {500,500,30,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+// jmil slow acceleration
+//#define DEFAULT_MAX_ACCELERATION      {500, 500, 30, 500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+
+// jmil fast acceleration
+#define DEFAULT_MAX_ACCELERATION      {2000, 2000, 30, 500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,30,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
 #define DEFAULT_RETRACT_ACCELERATION  3000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
 
 // 
-#define DEFAULT_XYJERK                20.0    // (mm/sec)
+#define DEFAULT_XYJERK                5.0    // (mm/sec)
 #define DEFAULT_ZJERK                 0.4     // (mm/sec)
 #define DEFAULT_EJERK                 5.0    // (mm/sec)
 
 // Microstep setting (Only functional when microstep pins are connected to MCU (set to 1,2,4,16 for RAMBO)
-#define XMICROSTEP4
-#define YMICROSTEP4
+#define XMICROSTEP16
+#define YMICROSTEP16
 #define ZMICROSTEP2
 #define E0MICROSTEP4
 #define E1MICROSTEP2
