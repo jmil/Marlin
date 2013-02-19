@@ -229,7 +229,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // Extrusion = 800/(7.25*pi)*43/10 gear ratio, gives: 151.03255289704
 
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {50.0044985659365, 50.0044985659365, 503.93700787401625, 800/7.25/3.1415926*43/10}
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*4/3.14159265358979/23, 400*4/3.14159265358979/23, 503.93700787401625, 800/7.25/3.14159265358979*43/10}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*4/3.14159265358979/23, 400*4/3.14159265358979/23, 503.93700787401625, 1380/4}
 
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 200000}    // (mm/sec)    
 #define DEFAULT_MAX_ACCELERATION      {500,500,30,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
