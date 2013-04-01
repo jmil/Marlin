@@ -233,7 +233,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 200000}    // (mm/sec)    
 // jmil slow acceleration
-#define DEFAULT_MAX_ACCELERATION      {5000, 5000, 30, 5000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_MAX_ACCELERATION      {500, 500, 30, 500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 // jmil fast acceleration
 //#define DEFAULT_MAX_ACCELERATION      {2000, 2000, 30, 500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
