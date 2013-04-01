@@ -8,12 +8,12 @@
 //User specified version info of THIS file to display in [Pronterface, etc] terminal window during startup.
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to THIS file by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "2012-07-25" //Personal revision number for changes to THIS file.
-#define STRING_CONFIG_H_AUTHOR "jmil Komodo with Rambo" //Who made the changes.
+#define STRING_VERSION_CONFIG_H "2013-04-01" //Personal revision number for changes to THIS file.
+#define STRING_CONFIG_H_AUTHOR "jmil Komodo with RAMBo" //Who made the changes.
 
 // This determines the communication speed of the printer
-#define BAUDRATE 250000
-//#define BAUDRATE 115200
+//#define BAUDRATE 250000
+#define BAUDRATE 115200
 
 //// The following define selects which electronics board you have. Please choose the one that matches your setup
 // Gen7 custom (Alfons3 Version) = 10 "https://github.com/Alfons3/Generation_7_Electronics"
