@@ -170,7 +170,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #define DISABLE_E false // For all extruders
 
 #define INVERT_X_DIR true    // for Mendel set to false, for Orca set to true
-#define INVERT_Y_DIR false    // for Mendel set to true, for Orca set to false
+#define INVERT_Y_DIR true    // for Mendel set to true, for Orca set to false
 #define INVERT_Z_DIR true     // for Mendel set to false, for Orca set to true
 #define INVERT_E0_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E1_DIR false    // for direct drive extruder v9 set to true, for geared extruder set to false
@@ -192,9 +192,9 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 // Sugar Printing
 //#define X_MAX_LENGTH 235
 // Plastic Printing
-#define X_MAX_LENGTH 247
-#define Y_MAX_LENGTH 259
-#define Z_MAX_LENGTH 196
+#define X_MAX_LENGTH 600
+#define Y_MAX_LENGTH 475
+#define Z_MAX_LENGTH 95
 
 // HIVE KOMODO PRINTING, RAMBO SECOND PROTOTYPE
 //// Sugar Printing
@@ -251,8 +251,8 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 // HIVE KOMODO PRINTER, RAMBO SECOND PROTOTYPE
 // #define DEFAULT_AXIS_STEPS_PER_UNIT   {400*4/3.14159265358979/23, 400*4/3.14159265358979/23, 503.93700787401625, 800/7.25/3.14159265358979*43/10}
 
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 200000}    // (mm/sec)    
-#define DEFAULT_MAX_ACCELERATION      {500,500,30,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_MAX_FEEDRATE          {350, 350, 500, 200000}    // (mm/sec)    
+#define DEFAULT_MAX_ACCELERATION      {9000,9000,9000,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,30,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
@@ -260,7 +260,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // 
 #define DEFAULT_XYJERK                20.0    // (mm/sec)
-#define DEFAULT_ZJERK                 0.4     // (mm/sec)
+#define DEFAULT_ZJERK                 20.0     // (mm/sec)
 #define DEFAULT_EJERK                 5.0    // (mm/sec)
 
 // Microstep setting (Only functional when microstep pins are connected to MCU (set to 1,2,4,16 for RAMBO)
