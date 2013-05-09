@@ -8,8 +8,8 @@
 //User specified version info of THIS file to display in [Pronterface, etc] terminal window during startup.
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to THIS file by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "2012-08-20" //Personal revision number for changes to THIS file.
-#define STRING_CONFIG_H_AUTHOR "ChenLab Komodo with RAMBO SECOND PROTOTYPE, USE 115200 Connection Speed. NOTE: FIRMWARE USES E1 terminal as Z2 motor" //Who made the changes.
+#define STRING_VERSION_CONFIG_H "2013-05-09" //Personal revision number for changes to THIS file.
+#define STRING_CONFIG_H_AUTHOR "ChenLab ShopBot Desktop D2418, USE 115200 Connection Speed. NOTE: FIRMWARE USES E1 terminal as Z2 motor" //Who made the changes.
 
 
 // This determines the communication speed of the printer
@@ -143,18 +143,18 @@
 #endif
 
 #ifdef ENDSTOPPULLUPS
-  #define ENDSTOPPULLUP_XMAX
-  #define ENDSTOPPULLUP_YMAX
-  #define ENDSTOPPULLUP_ZMAX
+//  #define ENDSTOPPULLUP_XMAX
+//  #define ENDSTOPPULLUP_YMAX
+//  #define ENDSTOPPULLUP_ZMAX
   #define ENDSTOPPULLUP_XMIN
   #define ENDSTOPPULLUP_YMIN
   #define ENDSTOPPULLUP_ZMIN
 #endif
 
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
-const bool X_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
-const bool Y_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
-const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
+const bool X_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
+const bool Y_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
+const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
 //#define DISABLE_MAX_ENDSTOPS
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
