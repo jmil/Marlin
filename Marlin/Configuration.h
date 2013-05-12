@@ -211,7 +211,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {6000, 6000, 10*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {2000, 2000, 300, 0}  // set the homing speeds (mm/min)
 
 // default settings 
 
@@ -256,7 +256,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 //#define DEFAULT_MAX_FEEDRATE          {350, 350, 500, 200000}    // (mm/sec)    
 //#define DEFAULT_MAX_ACCELERATION      {9000,9000,30,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
-#define DEFAULT_MAX_FEEDRATE          {165, 165, 200, 200000}    // (mm/sec)    
+#define DEFAULT_MAX_FEEDRATE          {165, 165, 300, 200000}    // (mm/sec)    
 #define DEFAULT_MAX_ACCELERATION      {5000,5000,5000,500}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 
