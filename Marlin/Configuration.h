@@ -13,7 +13,7 @@
 
 
 // This determines the communication speed of the printer
-#define BAUDRATE 115200
+#define BAUDRATE 250000
 //#define BAUDRATE 115200
 
 //// The following define selects which electronics board you have. Please choose the one that matches your setup
@@ -194,7 +194,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 // Plastic Printing
 #define X_MAX_LENGTH 600
 #define Y_MAX_LENGTH 475
-#define Z_MAX_LENGTH 95
+#define Z_MAX_LENGTH 90
 
 // HIVE KOMODO PRINTING, RAMBO SECOND PROTOTYPE
 //// Sugar Printing
@@ -238,7 +238,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 //#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*8/3.14159265358979/20.37, 400*8/3.14159265358979/20.37, 503.93700787401625, 1380/4}
 
 // ChenLab SHOPBOT DESKTOP, 2013-05-09
-// ShopBot tells us we have 1/10 stepping always, and 4000 steps per Revolutions
+// ShopBot tells us we have 1/10 stepping always, and 4000 steps per Inch
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {4000/25.4, 4000/25.4, 4000/25.4, 1380/4}
 
 
@@ -269,9 +269,9 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #define DEFAULT_EJERK                 5.0    // (mm/sec)
 
 // Microstep setting (Only functional when microstep pins are connected to MCU (set to 1,2,4,16 for RAMBO)
-#define XMICROSTEP16
-#define YMICROSTEP16
-#define ZMICROSTEP2
+#define XMICROSTEP1
+#define YMICROSTEP1
+#define ZMICROSTEP1
 #define E0MICROSTEP4
 #define E1MICROSTEP2
 
