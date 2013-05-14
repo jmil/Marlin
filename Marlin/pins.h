@@ -1441,24 +1441,33 @@
 
 #define LARGE_FLASH true
 
-#define X_STEP_PIN 37
-#define X_DIR_PIN 48
+// jmil changed for ChenBot ShopBot Desktop D2418 for using RAMBO MotorEXT pins
+#define X_STEP_PIN 32
+#define X_DIR_PIN 44
+#define Y_STEP_PIN 31
+#define Y_DIR_PIN 45
+#define Z_STEP_PIN 30
+#define Z_DIR_PIN 46
+#define X_ENABLE_PIN 22
+
+//#define X_STEP_PIN 37
+//#define X_DIR_PIN 48
 #define X_MIN_PIN 12
 #define X_MAX_PIN 24
-#define X_ENABLE_PIN 29
+//#define X_ENABLE_PIN 29
 #define X_MS1_PIN 40
 #define X_MS2_PIN 41
 
-#define Y_STEP_PIN 36
-#define Y_DIR_PIN 49
+//#define Y_STEP_PIN 36
+//#define Y_DIR_PIN 49
 #define Y_MIN_PIN 11
 #define Y_MAX_PIN 23
 #define Y_ENABLE_PIN 28
 #define Y_MS1_PIN 69
 #define Y_MS2_PIN 39
 
-#define Z_STEP_PIN 35
-#define Z_DIR_PIN 47
+//#define Z_STEP_PIN 35
+//#define Z_DIR_PIN 47
 #define Z_MIN_PIN 10
 #define Z_MAX_PIN 30
 #define Z_ENABLE_PIN 27
