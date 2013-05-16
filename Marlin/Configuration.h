@@ -418,7 +418,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 //#define SF_ARC_FIX
 
 // Support for the BariCUDA Paste Extruder.
-//#define BARICUDA
+#define BARICUDA
 
 #include "Configuration_adv.h"
 #include "thermistortables.h"
