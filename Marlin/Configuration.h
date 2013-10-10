@@ -8,8 +8,8 @@
 //User specified version info of THIS file to display in [Pronterface, etc] terminal window during startup.
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to THIS file by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "2012-08-20" //Personal revision number for changes to THIS file.
-#define STRING_CONFIG_H_AUTHOR "ChenLab Komodo with RAMBO SECOND PROTOTYPE, USE 115200 Connection Speed. NOTE: FIRMWARE USES E1 terminal as Z2 motor" //Who made the changes.
+#define STRING_VERSION_CONFIG_H "2013-10-09" //Personal revision number for changes to THIS file.
+#define STRING_CONFIG_H_AUTHOR "jmil for Ricardo's BioBot, Komodo printer, USE 115200 Connection Speed. NOTE: FIRMWARE USES E1 terminal as Z2 motor" //Who made the changes.
 
 
 // This determines the communication speed of the printer
@@ -143,18 +143,18 @@
 #endif
 
 #ifdef ENDSTOPPULLUPS
-  #define ENDSTOPPULLUP_XMAX
-  #define ENDSTOPPULLUP_YMAX
-  #define ENDSTOPPULLUP_ZMAX
+  //#define ENDSTOPPULLUP_XMAX
+  //#define ENDSTOPPULLUP_YMAX
+  //#define ENDSTOPPULLUP_ZMAX
   #define ENDSTOPPULLUP_XMIN
   #define ENDSTOPPULLUP_YMIN
   #define ENDSTOPPULLUP_ZMIN
 #endif
 
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
-const bool X_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
-const bool Y_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
-const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
+const bool X_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
+const bool Y_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
+const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
 //#define DISABLE_MAX_ENDSTOPS
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
@@ -170,7 +170,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define DISABLE_E false // For all extruders
 
 #define INVERT_X_DIR true    // for Mendel set to false, for Orca set to true
-#define INVERT_Y_DIR true    // for Mendel set to true, for Orca set to false
+#define INVERT_Y_DIR false    // for Mendel set to true, for Orca set to false
 #define INVERT_Z_DIR false     // for Mendel set to false, for Orca set to true
 #define INVERT_E0_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E1_DIR false    // for direct drive extruder v9 set to true, for geared extruder set to false
@@ -235,7 +235,13 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // RAMBO SECOND PROTOTYPE, CHENLAB, PLASTIC PRINTING WITH MAKERGEAR HOT END:
 // USE E1 PORT AS Z2, FTW
 // AS PER JOHNNYR-- 1/16th stepping setting is actually only 1/8th stepping since the drivers can only do 1/8th stepping
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {400*8/3.14159265358979/20.37, 400*8/3.14159265358979/20.37, 503.93700787401625, 1380/4}
+
+// FOR RICARDO -- 2013-10-09. We have a recent RAMBo. It can do 1/16th stepping. We have LulzBot 200 steps per rev motors at full stepping.
+// TechPaladin now sells motor pulleys with a pitch diameter of 12 mm. So Ricardo's calculation becomes: 200 steps/revolution * 16th Microstepping [NOTE: this is 3200 steps per revolution] * 1 revolution / (Pi * 12 mm pitch diameter) ==   steps per mm
+// TechPaladin for it's z-axis acme rods uses same as makergear, 1.5875 mm per revolution. With LulzBot motors (200 steps per rev at full stepping), and we are staying with 1/2 stepping on Z-axis for max torque with smooth motion. this gives us: 200 steps/revolution * 2 microstepping [NOTE: THIS IS 400 steps per rev] * 1 revolution/1.5875
+
+
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {200*16/3.14159265358979/12, 200*16/3.14159265358979/12, 200*2/1.5875, 1380/4}
 
 
 // GOING BACK GO GREGS HINGED WADES EXTRUDER
@@ -270,11 +276,11 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // Values 0-255
 // RAMBO 135 = ~0.75A, 185 = ~1A
 #define DIGIPOT_MOTOR_CURRENT
-#define X_CURRENT 230
-#define Y_CURRENT 230
-#define Z_CURRENT 255
+#define X_CURRENT 185
+#define Y_CURRENT 185
+#define Z_CURRENT 185
 #define E0_CURRENT 185
-#define E1_CURRENT 255
+#define E1_CURRENT 185
 
 //===========================================================================
 //=============================Additional Features===========================
